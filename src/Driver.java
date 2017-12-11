@@ -3,14 +3,20 @@ import java.sql.*;
 public class Driver {
 
     public static void main(String args[]) throws ClassNotFoundException, SQLException {
-        String userName = "root";
+        /*String userName = "root";
         String password = "jgana1997";
 
-        String url = "jdbc:sqlserver://localhost:1433;instance=SQLEXPRESS;databaseName=mydatabase;integratedSecurity=true;";
+        String url = "jdbc:sqlserver://25.57.197.92;instance=SQLEXPRESS;databaseName=mydatabase;integratedSecurity=true;";
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        Connection conn = DriverManager.getConnection(url, userName, password);
+        Connection conn = DriverManager.getConnection(url, userName, password);*/
 
-        Statement m_Statement = conn.createStatement();
+        SSMSConnection db = new SSMSConnection("root", "jgana1997");
+
+//        Statement m_Statement = conn.createStatement();
+
+        Statement m_Statement = db.getConnection().createStatement();
+
+
         String query = "SELECT * FROM dbo.Country$ where CountryName = 'Andorra'";
 
         ResultSet m_ResultSet = m_Statement.executeQuery(query);
