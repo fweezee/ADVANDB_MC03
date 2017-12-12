@@ -11,19 +11,20 @@ public class Driver {
         Connection conn = DriverManager.getConnection(url, userName, password);*/
 
         SSMSConnection db = new SSMSConnection("root", "jgana1997");
-
-//        Statement m_Statement = conn.createStatement();
-
         Statement m_Statement = db.getConnection().createStatement();
 
 
-        String query = "SELECT * FROM dbo.Country$ where CountryName = 'Andorra'";
+        //String query = "SELECT * FROM dbo.Country$ where Region like '%Asia%' or Region like '%Aftica%'";
+
+        String query = "SELECT * FROM country";
 
         ResultSet m_ResultSet = m_Statement.executeQuery(query);
-
         while (m_ResultSet.next()) {
-            System.out.println(m_ResultSet.getString(1) + ", " + m_ResultSet.getString(2) + ", "
-                    + m_ResultSet.getString(3));
+//            System.out.println(m_ResultSet.getString(1) + ", " + m_ResultSet.getString(2) + ", "
+//                    + m_ResultSet.getString(3));
+
+            System.out.println(m_ResultSet.getString(1) + ", " + m_ResultSet.getString(1) + ", "
+                    + m_ResultSet.getString(1));
         }
     }
 }
